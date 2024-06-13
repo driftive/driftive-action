@@ -11,9 +11,19 @@ inputs:
     description: 'Number of parallel projects to scan'
     required: true
     default: "1"
+  distribution:
+    description: 'terraform distribution. Default is "tf". Options are "tf" for Terraform, "tofu" for OpenTofu.'
+    required: false
+    default: "tf"
+  distribution-version:
+    description: 'terraform distribution version. Default is "latest"'
+    required: false
+    default: "latest"
 runs:
   using: 'docker'
   image: Dockerfile
   args:
     - ${{ inputs.slack-url }}
     - ${{ inputs.concurrency }}
+    - ${{ inputs.distribution }}
+    - ${{ inputs.distribution-version }}
