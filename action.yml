@@ -19,6 +19,10 @@ inputs:
     description: 'terraform distribution version. Default is "latest"'
     required: false
     default: "latest"
+  terragrunt-version:
+    description: 'terragrunt version. Default is "latest"'
+    required: false
+    default: "latest"
 runs:
   using: 'docker'
   image: Dockerfile

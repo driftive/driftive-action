@@ -5,6 +5,7 @@ SLACK_URL=$1
 CONCURRENCY=$2
 TERRAFORM_DISTRIBUTION=$3
 TERRAFORM_DISTRIBUTION_VERSION=$4
+TERRAGRUNT_VERSION=$5
 
 if [ "$TERRAFORM_DISTRIBUTION" != "tf" ] && [ "$TERRAFORM_DISTRIBUTION" != "tofu" ]; then
     echo "Invalid value for TERRAFORM_DISTRIBUTION"
@@ -17,5 +18,6 @@ if [ -z "SLACK_URL" ]; then
 fi
 
 tenv install $TERRAFORM_DISTRIBUTION $TERRAFORM_DISTRIBUTION_VERSION
+tenv install tg 
 
 driftive --repo-path="$REPO_PATH" --slack-url="$SLACK_URL" --concurrency="$CONCURRENCY"
