@@ -31,3 +31,4 @@ runs:
     - ${{ inputs.concurrency }}
     - ${{ inputs.distribution }}
     - ${{ inputs.distribution-version }}
+    - ${{ inputs.terragrunt-version }}
