@@ -18,6 +18,6 @@ if [ -z "SLACK_URL" ]; then
 fi
 
 tenv install $TERRAFORM_DISTRIBUTION $TERRAFORM_DISTRIBUTION_VERSION
-tenv install tg 
+tenv install tg $TERRAGRUNT_VERSION
 
 driftive --repo-path="$REPO_PATH" --slack-url="$SLACK_URL" --concurrency="$CONCURRENCY"
