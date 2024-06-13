@@ -1,0 +1,19 @@
+name: 'Driftive'
+description: 'Driftive detects state drifts in Terragrunt projects'
+inputs:
+  github-token:
+    description: 'GitHub token for authentication'
+    required: true
+  slack-url:
+    description: 'Slack webhook URL, for notifications'
+    required: true
+  concurrency:
+    description: 'Number of parallel projects to scan'
+    required: true
+    default: "1"
+runs:
+  using: 'docker'
+  image: Dockerfile
+  args:
+    - ${{ inputs.slack-url }}
+    - ${{ inputs.concurrency }}
