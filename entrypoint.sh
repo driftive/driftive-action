@@ -31,7 +31,7 @@ if [ -n "$LOG_LEVEL" ]; then
 fi
 
 if [ -n "$STDOUT_OUTPUT" ]; then
-  driftive_args="$driftive_args --stdout-output=${STDOUT_OUTPUT:-true}"
+  driftive_args="$driftive_args --stdout=${STDOUT_OUTPUT:-true}"
 fi
 
 if [ -n "$GITHUB_ISSUES" ]; then
