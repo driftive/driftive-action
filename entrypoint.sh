@@ -18,7 +18,7 @@ if [ -n "$SLACK_URL" ]; then
 fi
 
 if [ -n "$CONCURRENCY" ]; then
-  driftive_args="--concurrency=$CONCURRENCY"
+  driftive_args="--concurrency=${CONCURRENCY || 1}"
 fi
 
 if [ -n "$GITHUB_TOKEN" ]; then
@@ -26,11 +26,11 @@ if [ -n "$GITHUB_TOKEN" ]; then
 fi
 
 if [ -n "$LOG_LEVEL" ]; then
-  driftive_args="$driftive_args --log-level=$LOG_LEVEL"
+  driftive_args="$driftive_args --log-level=${LOG_LEVEL || 'info'}"
 fi
 
 if [ -n "$STDOUT_OUTPUT" ]; then
-  driftive_args="$driftive_args --stdout-output=$STDOUT_OUTPUT"
+  driftive_args="$driftive_args --stdout-output=${STDOUT_OUTPUT || 'true'}"
 fi
 
 if [ -n "$GITHUB_ISSUES" ]; then
