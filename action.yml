@@ -46,6 +46,6 @@ runs:
     STDOUT_OUTPUT: ${{ inputs.enable-stdout-output }}
     GITHUB_ISSUES: ${{ inputs.github-issues }}
 
-    DISTRIBUTION: ${{ inputs.distribution }}
-    DISTRIBUTION_VERSION: ${{ inputs.distribution-version }}
+    TERRAFORM_DISTRIBUTION: ${{ inputs.distribution }}
+    $TERRAFORM_DISTRIBUTION_VERSION: ${{ inputs.distribution-version }}
     TERRAGRUNT_VERSION: ${{ inputs.terragrunt-version }}
