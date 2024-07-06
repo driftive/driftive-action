@@ -1,5 +1,8 @@
 name: 'Driftive'
-description: 'Driftive detects state drifts in Terragrunt projects'
+description: 'Driftive detects state drifts in Terraform/Terragrunt/OpenTofu projects'
+branding:
+  icon: loader
+  color: blue
 inputs:
   github-token:
     description: 'GitHub token for authentication'
