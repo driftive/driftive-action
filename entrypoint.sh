@@ -1,23 +1,40 @@
 #!/bin/sh -l
 
-REPO_PATH=./
-SLACK_URL=$1
-CONCURRENCY=$2
-TERRAFORM_DISTRIBUTION=$3
-TERRAFORM_DISTRIBUTION_VERSION=$4
-TERRAGRUNT_VERSION=$5
-
 if [ "$TERRAFORM_DISTRIBUTION" != "tf" ] && [ "$TERRAFORM_DISTRIBUTION" != "tofu" ]; then
     echo "Invalid value for TERRAFORM_DISTRIBUTION"
     exit 1
 fi
 
-if [ -z "SLACK_URL" ]; then
-  echo "SLACK_URL is required"
-  exit 1
+tenv $TERRAFORM_DISTRIBUTION install $TERRAFORM_DISTRIBUTION_VERSION
+
+# terragrunt is now optional. If present, install it using tenv
+if [ -n "$TERRAGRUNT_VERSION" ]; then
+  tenv tg install $TERRAGRUNT_VERSION
 fi
 
-tenv $TERRAFORM_DISTRIBUTION install $TERRAFORM_DISTRIBUTION_VERSION
-tenv tg install $TERRAGRUNT_VERSION
+driftive_args="--repo-path=./"
+if [ -n "$SLACK_URL" ]; then
+  driftive_args="--slack-url=$SLACK_URL"
+fi
 
-driftive --repo-path="$REPO_PATH" --slack-url="$SLACK_URL" --concurrency="$CONCURRENCY"
+if [ -n "$CONCURRENCY" ]; then
+  driftive_args="--concurrency=$CONCURRENCY"
+fi
+
+if [ -n "$GITHUB_TOKEN" ]; then
+  driftive_args="--github-token=$GITHUB_TOKEN"
+fi
+
+if [ -n "$LOG_LEVEL" ]; then
+  driftive_args="$driftive_args --log-level=$LOG_LEVEL"
+fi
+
+if [ -n "$STDOUT_OUTPUT" ]; then
+  driftive_args="$driftive_args --stdout-output=$STDOUT_OUTPUT"
+fi
+
+if [ -n "$GITHUB_ISSUES" ]; then
+  driftive_args="$driftive_args --github-issues=$GITHUB_ISSUES"
+fi
+
+driftive --repo-path="$REPO_PATH" $driftive_args

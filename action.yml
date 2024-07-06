@@ -23,12 +23,29 @@ inputs:
     description: 'terragrunt version. Default is "latest"'
     required: false
     default: "latest"
+  log-level:
+    description: 'log level. Default is "info"'
+    required: false
+    default: "info"
+  enable-stdout-output:
+    description: 'enable stdout output. Default is "false"'
+    required: false
+    default: "true"
+  enable-github-issues:
+    description: 'enable github issues. Default is "false"'
+    required: false
+    default: "false"
 runs:
   using: 'docker'
   image: Dockerfile
-  args:
-    - ${{ inputs.slack-url }}
-    - ${{ inputs.concurrency }}
-    - ${{ inputs.distribution }}
-    - ${{ inputs.distribution-version }}
-    - ${{ inputs.terragrunt-version }}
+  env:
+    GITHUB_TOKEN: ${{ inputs.github-token }}
+    SLACK_URL: ${{ inputs.slack-url }}
+    CONCURRENCY: ${{ inputs.concurrency }}
+    LOG_LEVEL: ${{ inputs.log-level }}
+    STDOUT_OUTPUT: ${{ inputs.enable-stdout-output }}
+    GITHUB_ISSUES: ${{ inputs.github-issues }}
+
+    DISTRIBUTION: ${{ inputs.distribution }}
+    DISTRIBUTION_VERSION: ${{ inputs.distribution-version }}
+    TERRAGRUNT_VERSION: ${{ inputs.terragrunt-version }}
