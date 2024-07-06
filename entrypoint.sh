@@ -7,22 +7,23 @@ fi
 
 tenv $TERRAFORM_DISTRIBUTION install $TERRAFORM_DISTRIBUTION_VERSION
 
-# terragrunt is now optional. If present, install it using tenv
+# terragrunt is optional. If present, install it using tenv
 if [ -n "$TERRAGRUNT_VERSION" ]; then
   tenv tg install $TERRAGRUNT_VERSION
 fi
 
-driftive_args="--repo-path=./"
+driftive_args=" --repo-path=./"
 if [ -n "$SLACK_URL" ]; then
-  driftive_args="--slack-url=$SLACK_URL"
+  driftive_args="$driftive_args --slack-url=$SLACK_URL"
 fi
 
 if [ -n "$CONCURRENCY" ]; then
-  driftive_args="--concurrency=${CONCURRENCY || 1}"
+  # use concurrency or default to 1
+  driftive_args="$driftive_args --concurrency=${CONCURRENCY || '1'}"
 fi
 
 if [ -n "$GITHUB_TOKEN" ]; then
-  driftive_args="--github-token=$GITHUB_TOKEN"
+  driftive_args="$driftive_args --github-token=$GITHUB_TOKEN"
 fi
 
 if [ -n "$LOG_LEVEL" ]; then
@@ -37,4 +38,4 @@ if [ -n "$GITHUB_ISSUES" ]; then
   driftive_args="$driftive_args --github-issues=$GITHUB_ISSUES"
 fi
 
-driftive --repo-path="$REPO_PATH" $driftive_args
+driftive $driftive_args
