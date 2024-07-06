@@ -19,7 +19,7 @@ fi
 
 if [ -n "$CONCURRENCY" ]; then
   # use concurrency or default to 1
-  driftive_args="$driftive_args --concurrency=${CONCURRENCY || '1'}"
+  driftive_args="$driftive_args --concurrency=${CONCURRENCY:-1}"
 fi
 
 if [ -n "$GITHUB_TOKEN" ]; then
@@ -27,11 +27,11 @@ if [ -n "$GITHUB_TOKEN" ]; then
 fi
 
 if [ -n "$LOG_LEVEL" ]; then
-  driftive_args="$driftive_args --log-level=${LOG_LEVEL || 'info'}"
+  driftive_args="$driftive_args --log-level=${LOG_LEVEL:-info}"
 fi
 
 if [ -n "$STDOUT_OUTPUT" ]; then
-  driftive_args="$driftive_args --stdout-output=${STDOUT_OUTPUT || 'true'}"
+  driftive_args="$driftive_args --stdout-output=${STDOUT_OUTPUT:-true}"
 fi
 
 if [ -n "$GITHUB_ISSUES" ]; then
