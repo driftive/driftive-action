@@ -44,7 +44,7 @@ runs:
     CONCURRENCY: ${{ inputs.concurrency }}
     LOG_LEVEL: ${{ inputs.log-level }}
     STDOUT_OUTPUT: ${{ inputs.enable-stdout-output }}
-    GITHUB_ISSUES: ${{ inputs.github-issues }}
+    GITHUB_ISSUES: ${{ inputs.enable-github-issues }}
 
     TERRAFORM_DISTRIBUTION: ${{ inputs.distribution }}
     TERRAFORM_DISTRIBUTION_VERSION: ${{ inputs.distribution-version }}
