@@ -38,4 +38,8 @@ if [ -n "$GITHUB_ISSUES" ]; then
   driftive_args="$driftive_args --github-issues=$GITHUB_ISSUES"
 fi
 
+if [ -n "$CLOSE_ISSUES" ]; then
+  driftive_args="$driftive_args --close-resolved-issues=${CLOSE_ISSUES:-false}"
+fi
+
 driftive $driftive_args

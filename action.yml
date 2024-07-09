@@ -38,6 +38,10 @@ inputs:
     description: 'enable github issues. Default is "false"'
     required: false
     default: "false"
+  close-resolved-issues:
+    description: 'close resolved issues. Default is "false"'
+    required: false
+    default: "false"
 runs:
   using: 'docker'
   image: Dockerfile
@@ -48,6 +52,7 @@ runs:
     LOG_LEVEL: ${{ inputs.log-level }}
     STDOUT_OUTPUT: ${{ inputs.enable-stdout-output }}
     GITHUB_ISSUES: ${{ inputs.enable-github-issues }}
+    CLOSE_ISSUES: ${{ inputs.close-resolved-issues }}
 
     TERRAFORM_DISTRIBUTION: ${{ inputs.distribution }}
     TERRAFORM_DISTRIBUTION_VERSION: ${{ inputs.distribution-version }}
