@@ -1,4 +1,4 @@
-FROM driftive/driftive:0.7.1 as build
+FROM driftive/driftive:0.8.0 as build
 FROM alpine:3.20
 COPY --from=build /usr/local/bin/driftive /usr/local/bin/driftive
 COPY entrypoint.sh /entrypoint.sh
