@@ -42,4 +42,8 @@ if [ -n "$CLOSE_ISSUES" ]; then
   driftive_args="$driftive_args --close-resolved-issues=${CLOSE_ISSUES:-false}"
 fi
 
+if [ -n "$MAX_ISSUES" ]; then
+  driftive_args="$driftive_args --max-opened-issues=${MAX_ISSUES:-10}"
+fi
+
 driftive $driftive_args

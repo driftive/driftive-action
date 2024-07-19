@@ -42,6 +42,10 @@ inputs:
     description: 'close resolved issues. Default is "false"'
     required: false
     default: "false"
+  max-opened-issues:
+    description: 'maximum number of opened issues. Default is "10"'
+    required: false
+    default: "10"
 runs:
   using: 'docker'
   image: Dockerfile
@@ -53,6 +57,7 @@ runs:
     STDOUT_OUTPUT: ${{ inputs.enable-stdout-output }}
     GITHUB_ISSUES: ${{ inputs.enable-github-issues }}
     CLOSE_ISSUES: ${{ inputs.close-resolved-issues }}
+    MAX_ISSUES: ${{ inputs.max-opened-issues }}
 
     TERRAFORM_DISTRIBUTION: ${{ inputs.distribution }}
     TERRAFORM_DISTRIBUTION_VERSION: ${{ inputs.distribution-version }}
