@@ -1,5 +1,5 @@
-FROM driftive/driftive:0.8.0 as build
-FROM alpine:3.20
+FROM ghcr.io/driftive/driftive:0.8.1 as build
+FROM public.ecr.aws/docker/library/alpine:3.20
 COPY --from=build /usr/local/bin/driftive /usr/local/bin/driftive
 COPY entrypoint.sh /entrypoint.sh
 
