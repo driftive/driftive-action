@@ -24,19 +24,6 @@ The number of projects driftive will run concurrently. Default is `1`.
 
 The Slack webhook URL to use for sending state drift notifications.
 
-#### `enable-github-issues` (optional)
-
-Enable creating GitHub issues for detected state drifts. Default is `false`.
-If enabled, `github-token` must be provided. Also, a `GITHUB_CONTEXT` environment variable must be set (see example below).
-
-#### `close-resolved-issues` (optional)
-
-Close GitHub issues for resolved state drifts. Default is `false`.
-
-#### `max-opened-issues` (optional)
-
-The maximum number of open issues to have at any given time. Default is `10`.
-
 #### `github-token` (optional)
 
 The GitHub token to use for creating issues. Required if `enable-github-issues` is set to `true`.
@@ -74,9 +61,6 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }} # Required if `enable-github-issues` is true
       with:
-        enable-github-issues: true
-        close-resolved-issues: true
-        max-opened-issues: 5
         github-token: ${{ secrets.GITHUB_TOKEN }} # Required if `enable-github-issues` is true
         slack-url: ${{ secrets.SLACK_WEBHOOK_URL }}
         distribution: tf
