@@ -57,7 +57,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Driftive
-      uses: driftive/driftive-action@v0
+      uses: driftive/driftive-action@v0.x.y
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }} # Required if `enable-github-issues` is true
       with:
