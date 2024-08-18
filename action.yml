@@ -34,18 +34,6 @@ inputs:
     description: 'enable stdout output. Default is "true"'
     required: false
     default: "true"
-  enable-github-issues:
-    description: 'enable github issues. Default is "false"'
-    required: false
-    default: "false"
-  close-resolved-issues:
-    description: 'close resolved issues. Default is "false"'
-    required: false
-    default: "false"
-  max-opened-issues:
-    description: 'maximum number of opened issues. Default is "10"'
-    required: false
-    default: "10"
 runs:
   using: 'docker'
   image: Dockerfile

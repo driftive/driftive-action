@@ -34,16 +34,4 @@ if [ -n "$STDOUT_OUTPUT" ]; then
   driftive_args="$driftive_args --stdout=${STDOUT_OUTPUT:-true}"
 fi
 
-if [ -n "$GITHUB_ISSUES" ]; then
-  driftive_args="$driftive_args --github-issues=$GITHUB_ISSUES"
-fi
-
-if [ -n "$CLOSE_ISSUES" ]; then
-  driftive_args="$driftive_args --close-resolved-issues=${CLOSE_ISSUES:-false}"
-fi
-
-if [ -n "$MAX_ISSUES" ]; then
-  driftive_args="$driftive_args --max-opened-issues=${MAX_ISSUES:-10}"
-fi
-
 driftive $driftive_args
