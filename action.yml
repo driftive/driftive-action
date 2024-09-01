@@ -34,6 +34,10 @@ inputs:
     description: 'enable stdout output. Default is "true"'
     required: false
     default: "true"
+  exit-code:
+    description: 'set to true to exit with code 1 if drifts are detected. Default is "false"'
+    required: false
+    default: "false"
 runs:
   using: 'docker'
   image: Dockerfile
@@ -43,9 +47,7 @@ runs:
     CONCURRENCY: ${{ inputs.concurrency }}
     LOG_LEVEL: ${{ inputs.log-level }}
     STDOUT_OUTPUT: ${{ inputs.enable-stdout-output }}
-    GITHUB_ISSUES: ${{ inputs.enable-github-issues }}
-    CLOSE_ISSUES: ${{ inputs.close-resolved-issues }}
-    MAX_ISSUES: ${{ inputs.max-opened-issues }}
+    EXIT_CODE: ${{ inputs.exit-code }}
 
     TERRAFORM_DISTRIBUTION: ${{ inputs.distribution }}
     TERRAFORM_DISTRIBUTION_VERSION: ${{ inputs.distribution-version }}

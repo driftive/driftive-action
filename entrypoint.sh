@@ -34,4 +34,8 @@ if [ -n "$STDOUT_OUTPUT" ]; then
   driftive_args="$driftive_args --stdout=${STDOUT_OUTPUT:-true}"
 fi
 
+if [ -n "$EXIT_CODE" ]; then
+  driftive_args="$driftive_args --exit-code=${EXIT_CODE:-false}"
+fi
+
 driftive $driftive_args

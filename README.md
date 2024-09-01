@@ -36,6 +36,10 @@ Enable outputting driftive state drifts to stdout. Default is `true`.
 
 The log level to use. Options are `debug`, `info`, `warn`, `error`, `fatal`, and `panic`. Default is `info`.
 
+#### `exit-code` (optional)
+
+Set to true to exit with a non-zero exit code if driftive finds any state drift. Default is `false`.
+
 ## Example
 
 Full workflow example:
