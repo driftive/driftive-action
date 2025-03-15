@@ -64,6 +64,7 @@ jobs:
       uses: driftive/driftive-action@v0.x.y
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }} # Required if `enable-github-issues` is true
+        DRIFTIVE_TOKEN: ${{ secrets.DRIFTIVE_TOKEN }} # optional
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }} # Required if `enable-github-issues` is true
         slack-url: ${{ secrets.SLACK_WEBHOOK_URL }}
