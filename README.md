@@ -52,6 +52,7 @@ on:
 permissions:
   contents: read
   issues: write
+  pull-requests: read # required if `settings.skip_if_open_pr` in driftive.yml is set to true
 
 jobs:
   driftive:
