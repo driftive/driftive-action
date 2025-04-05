@@ -60,4 +60,7 @@ if [ -n "$EXIT_CODE" ]; then
   driftive_args="$driftive_args --exit-code=${EXIT_CODE:-false}"
 fi
 
+# Terragrunt get_repo_root() workaround
+git config --global --add safe.directory "*"
+
 driftive $driftive_args
