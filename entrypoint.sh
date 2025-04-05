@@ -32,6 +32,11 @@ if [ -n "$TERRAGRUNT_VERSION" ]; then
     echo "Terragrunt could not be found"
     exit 1
   fi
+
+  # Terragrunt get_repo_root() workaround.
+  # Without this, terragrunt will fail with "fatal: detected dubious ownership in repository at ..."
+  git config --global --add safe.directory "*"
+
 fi
 
 driftive_args=" --repo-path=./"
