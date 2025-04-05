@@ -1,5 +1,5 @@
 #!/bin/sh -l
-set -ex
+set -e
 
 if [ "$TERRAFORM_DISTRIBUTION" != "tf" ] && [ "$TERRAFORM_DISTRIBUTION" != "tofu" ]; then
     echo "Invalid value for TERRAFORM_DISTRIBUTION"
