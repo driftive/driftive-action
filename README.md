@@ -12,9 +12,19 @@ The Terraform distribution to use. Options are `tf` (Terraform) or `tofu` (OpenT
 
 The version of the Terraform distribution to use. Default is `latest`.
 
+#### `distribution-version-file` (optional)
+
+File containing the version spec of the version to use. At the moment, only [.tool-versions][tool-versions] file is
+supported, but feel free to open an issue to request support for another file format.
+
 #### `terragrunt-version` (optional)
 
 The version of Terragrunt to use. Default is `latest`.
+
+#### `terragrunt-version-file` (optional)
+
+File containing the version spec of the version to use. At the moment, only [.tool-versions][tool-versions] file is
+supported, but feel free to open an issue to request support for another file format.
 
 #### `concurrency` (optional)
 
@@ -74,3 +84,6 @@ jobs:
         terragrunt-version: 0.60.0
         concurrency: 4
 ```
+
+
+[tool-versions]: https://asdf-vm.com/manage/configuration.html#tool-versions

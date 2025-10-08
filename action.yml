@@ -21,11 +21,15 @@ inputs:
   distribution-version:
     description: 'terraform distribution version. Default is "latest"'
     required: false
-    default: "latest"
+  distribution-version-file:
+    description: 'File containing the version spec of the version to use.  Example: .tool-versions.'
+    required: false
   terragrunt-version:
     description: 'terragrunt version. Default is "latest"'
     required: false
-    default: "latest"
+  terragrunt-version-file:
+    description: 'File containing the version spec of the version to use.  Example: .tool-versions.'
+    required: false
   log-level:
     description: 'log level. Default is "info"'
     required: false
@@ -51,4 +55,6 @@ runs:
 
     TERRAFORM_DISTRIBUTION: ${{ inputs.distribution }}
     TERRAFORM_DISTRIBUTION_VERSION: ${{ inputs.distribution-version }}
+    TERRAFORM_DISTRIBUTION_VERSION_FILE: ${{ inputs.distribution-version-file }}
     TERRAGRUNT_VERSION: ${{ inputs.terragrunt-version }}
+    TERRAGRUNT_VERSION_FILE: ${{ inputs.terragrunt-version-file }}
