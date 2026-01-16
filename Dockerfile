@@ -1,4 +1,4 @@
-FROM ghcr.io/driftive/driftive:0.22.1 AS build
+FROM ghcr.io/driftive/driftive:0.23.0 AS build
 FROM ghcr.io/tofuutils/tenv:4.9.0
 COPY --from=build /usr/local/bin/driftive /usr/local/bin/driftive
 COPY entrypoint.sh /entrypoint.sh
