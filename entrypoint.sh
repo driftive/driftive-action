@@ -9,6 +9,12 @@ if [ "${TERRAFORM_DISTRIBUTION:-}" != "tf" ] && [ "${TERRAFORM_DISTRIBUTION:-}" 
   exit 1
 fi
 
+# Map action distribution input to mise tool name
+case "${TERRAFORM_DISTRIBUTION}" in
+  tf)   MISE_TOOL_NAME="terraform" ; DISTRIBUTION_BINARY="terraform" ;;
+  tofu) MISE_TOOL_NAME="opentofu"  ; DISTRIBUTION_BINARY="tofu" ;;
+esac
+
 if [ -n "${TERRAFORM_DISTRIBUTION_VERSION_FILE:-}" ] && [ -n "${TERRAFORM_DISTRIBUTION_VERSION:-}" ]; then
   echo '\"TERRAFORM_DISTRIBUTION_VERSION_FILE\" and \"TERRAFORM_DISTRIBUTION_VERSION\" cannot be specified at the same time.' >&2
   exit 1
@@ -53,21 +59,14 @@ else
   export TERRAGRUNT_VERSION="${TERRAGRUNT_VERSION:-latest}"
 fi
 
-tenv "${TERRAFORM_DISTRIBUTION}" install "${TERRAFORM_DISTRIBUTION_VERSION}"
-if [ "${TERRAFORM_DISTRIBUTION}" = "tf" ]; then
-  if ! command -v terraform &>/dev/null; then
-    echo "Terraform could not be found"
-    exit 1
-  fi
-elif [ "$TERRAFORM_DISTRIBUTION" = "tofu" ]; then
-  if ! command -v tofu &>/dev/null; then
-    echo "Tofu could not be found"
-    exit 1
-  fi
+mise use --global "${MISE_TOOL_NAME}@${TERRAFORM_DISTRIBUTION_VERSION}"
+if ! command -v "${DISTRIBUTION_BINARY}" &>/dev/null; then
+  echo "${DISTRIBUTION_BINARY} could not be found after installation" >&2
+  exit 1
 fi
 
 if [ -n "${TERRAGRUNT_VERSION}" ]; then
-  tenv tg install "${TERRAGRUNT_VERSION}"
+  mise use --global "terragrunt@${TERRAGRUNT_VERSION}"
   if ! command -v terragrunt &>/dev/null; then
     echo "Terragrunt could not be found"
     exit 1

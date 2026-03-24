@@ -1,8 +1,12 @@
 FROM ghcr.io/driftive/driftive:0.26.0 AS build
-FROM ghcr.io/tofuutils/tenv:4.9.3
+FROM alpine:3.21
 COPY --from=build /usr/local/bin/driftive /usr/local/bin/driftive
 COPY entrypoint.sh /entrypoint.sh
 
-RUN apk add cosign git
+RUN apk add --no-cache bash cosign curl git \
+    && curl https://mise.run | sh
+
+ENV MISE_YES=1
+ENV PATH="/root/.local/bin:/root/.local/share/mise/shims:${PATH}"
 
 ENTRYPOINT ["/entrypoint.sh"]
