@@ -7,6 +7,6 @@ RUN apk add --no-cache bash cosign curl git \
     && curl https://mise.run | sh
 
 ENV MISE_YES=1
-ENV PATH="/root/.local/bin:/root/.local/share/mise/shims:${PATH}"
+ENV PATH="/root/.local/bin:${PATH}"
 
 ENTRYPOINT ["/entrypoint.sh"]
