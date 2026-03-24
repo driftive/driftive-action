@@ -61,7 +61,7 @@ fi
 
 mise install "${MISE_TOOL_NAME}@${TERRAFORM_DISTRIBUTION_VERSION}"
 TOOL_DIR=$(mise where "${MISE_TOOL_NAME}@${TERRAFORM_DISTRIBUTION_VERSION}")
-export PATH="${TOOL_DIR}/bin:${PATH}"
+export PATH="${TOOL_DIR}:${PATH}"
 
 if ! command -v "${DISTRIBUTION_BINARY}" &>/dev/null; then
   echo "${DISTRIBUTION_BINARY} could not be found after installation" >&2
@@ -71,7 +71,7 @@ fi
 if [ -n "${TERRAGRUNT_VERSION}" ]; then
   mise install "terragrunt@${TERRAGRUNT_VERSION}"
   TG_DIR=$(mise where "terragrunt@${TERRAGRUNT_VERSION}")
-  export PATH="${TG_DIR}/bin:${PATH}"
+  export PATH="${TG_DIR}:${PATH}"
 
   if ! command -v terragrunt &>/dev/null; then
     echo "Terragrunt could not be found" >&2
