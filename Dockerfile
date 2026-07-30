@@ -1,5 +1,5 @@
 FROM ghcr.io/driftive/driftive:0.30.1 AS build
-FROM alpine:3.23
+FROM alpine:3.24
 COPY --from=build /usr/local/bin/driftive /usr/local/bin/driftive
 COPY entrypoint.sh /entrypoint.sh
 
